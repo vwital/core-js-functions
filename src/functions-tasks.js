@@ -187,13 +187,16 @@ function retry(func, attempts) {
  * cos(3.141592653589793) ends
  *
 //  */
-function logger() {
-  throw new Error('Not implemented');
+function logger(func, logFunc) {
+  return (...args) => {
+    const arg = args.map((ar) => JSON.stringify(ar));
+    logFunc(`${func.name}(${arg}) starts`);
+    const result = func(...args);
+    logFunc(`${func.name}(${arg}) ends`);
+    return result;
+  };
 }
 
-// const cosLogger = logger(Math.cos, console.log);
-// const result = cosLogger(Math.PI); // -1
-// console.log(result);
 /**
  * Return the function with partial applied arguments
  *
