@@ -156,7 +156,7 @@ function retry(func, attempts) {
       try {
         return func();
       } catch (e) {
-        console.log(e);
+        /* do nothing */
       }
       count += 1;
     }
