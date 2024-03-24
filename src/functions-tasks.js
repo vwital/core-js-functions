@@ -186,11 +186,14 @@ function retry(func, attempts) {
  * cos(3.141592653589793) starts
  * cos(3.141592653589793) ends
  *
- */
-function logger(/* func, logFunc */) {
+//  */
+function logger() {
   throw new Error('Not implemented');
 }
 
+// const cosLogger = logger(Math.cos, console.log);
+// const result = cosLogger(Math.PI); // -1
+// console.log(result);
 /**
  * Return the function with partial applied arguments
  *
@@ -225,8 +228,12 @@ function partialUsingArguments(/* fn, ...args1 */) {
  *   getId4() => 7
  *   getId10() => 11
  */
-function getIdGeneratorFunction(/* startFrom */) {
-  throw new Error('Not implemented');
+function getIdGeneratorFunction(startFrom) {
+  let num = startFrom - 1;
+  return () => {
+    num += 1;
+    return num;
+  };
 }
 
 module.exports = {
